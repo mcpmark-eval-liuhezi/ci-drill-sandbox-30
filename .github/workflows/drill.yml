@@ -1,0 +1,17 @@
+name: CI Drill
+
+on:
+  push:
+  workflow_dispatch:
+
+jobs:
+  stuck-build-sim:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Simulate a wedged CI build (sleep 600s = 10 minutes)
+        run: |
+          echo "Simulating a stuck/wedged build..."
+          echo "Start time: $(date -u +%Y-%m-%dT%H:%M:%SZ)"
+          sleep 600
+          echo "Sleep complete at: $(date -u +%Y-%m-%dT%H:%M:%SZ)"
+          echo "This job is stands-in for a build that wedged overnight and needs to be cancelled."
